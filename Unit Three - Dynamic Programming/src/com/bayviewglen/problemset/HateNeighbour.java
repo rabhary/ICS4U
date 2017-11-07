@@ -13,18 +13,8 @@ public class HateNeighbour {
 		}
 
 		for (int i = 2; i < nums.length - 1; i++) {
-			if (nums[i] + arr1[i - 2] > arr1[i - 1]) {
-				arr1[i] = nums[i] + arr1[i - 2];
-			} else {
-				arr1[i] = arr1[i - 1];
-			}
-			
-			if (nums[i] + arr2[i - 2] > arr2[i - 1]) {
-				arr2[i] = nums[i] + arr2[i - 2];
-			} else {
-				arr2[i] = arr2[i - 1];
-			}
-			
+			arr1[i] = Math.max(arr1[i - 2] + nums[i], arr1[i - 1]);
+			arr2[i] = Math.max(arr2[i - 2] + nums[nums.length - 1 - i], arr2[i - 1]);
 		}
 
 		System.out.println("The maximum donation you can get is " + Math.max(arr1[nums.length - 2], arr2[nums.length - 2]));
